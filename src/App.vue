@@ -13,12 +13,11 @@
             </template>
             <v-list>
               <v-list-item
-                href="https://github.com/Tiramister/integer-information-spa"
+                v-for="headerLink in headerLinks"
+                :key="headerLink.url"
+                :href="headerLink.url"
               >
-                <v-list-item-title>GitHub</v-list-item-title>
-              </v-list-item>
-              <v-list-item href="https://twitter.com/mistterpp">
-                <v-list-item-title>Twitter (@mistterpp)</v-list-item-title>
+                <v-list-item-title>{{ headerLink.title }}</v-list-item-title>
               </v-list-item>
             </v-list>
           </v-menu>
@@ -26,16 +25,12 @@
         <!-- sm 以上なら list -->
         <div class="d-none d-sm-flex">
           <a
-            class="text-decoration-none text-white"
-            href="https://github.com/Tiramister/integer-information-spa"
-          >
-            GitHub
-          </a>
-          <a
+            v-for="headerLink in headerLinks"
+            :key="headerLink.url"
+            :href="headerLink.url"
             class="text-decoration-none text-white pl-5"
-            href="https://twitter.com/mistterpp"
           >
-            Twitter (@mistterpp)
+            {{ headerLink.title }}
           </a>
         </div>
       </v-app-bar>
@@ -43,3 +38,21 @@
     </v-layout>
   </v-app>
 </template>
+
+<script setup lang="ts">
+type HeaderLink = {
+  title: string;
+  url: string;
+};
+
+const headerLinks: HeaderLink[] = [
+  {
+    title: "GitHub",
+    url: "https://github.com/Tiramister/integer-information-spa",
+  },
+  {
+    title: "作者 Twitter",
+    url: "https://twitter.com/mistterpp",
+  },
+];
+</script>
