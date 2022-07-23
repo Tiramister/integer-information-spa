@@ -1,3 +1,3 @@
-# integer-information-spa
+# integer-information-vue
 
-Integer Information の Single Page Application 版。
+Integer Information を Vue で実装し直したもの。
