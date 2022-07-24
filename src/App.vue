@@ -3,7 +3,7 @@
     <v-layout>
       <Header />
       <v-main>
-        <IntegerForm />
+        <router-view />
       </v-main>
     </v-layout>
   </v-app>
@@ -11,5 +11,4 @@
 
 <script setup lang="ts">
 import Header from "./components/Header.vue";
-import IntegerForm from "./components/IntegerForm.vue";
 </script>
