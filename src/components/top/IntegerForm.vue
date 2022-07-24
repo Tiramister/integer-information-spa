@@ -13,7 +13,7 @@
       class="ml-5"
       color="primary"
       flat
-      :disabled="!isValid"
+      :disabled="validateInteger(integer) !== true"
       @click="submit"
       >調べる</v-btn
     >
@@ -21,26 +21,25 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ComputedRef, Ref, ref } from "vue";
+import { Ref, ref, watch } from "vue";
 import { useRouter } from "vue-router";
+import validateInteger from "./validateInteger";
 
 const integer: Ref<string> = ref("");
 
-function validateInteger(v: string) {
-  return (
-    /^([1-9][0-9]{0,17}|10{18})$/.test(v) ||
-    "1 以上 1,000,000,000,000,000,000 以下の整数を入力してください"
-  );
-}
+// 親からクエリパラメータを受け取る
+const props = defineProps({
+  integer: String,
+});
+watch([props], () => {
+  if (props.integer !== undefined) {
+    integer.value = props.integer;
+  }
+});
 
-const isValid: ComputedRef<boolean> = computed(
-  () => validateInteger(integer.value) === true
-);
-
+// ルーティング
 const router = useRouter();
 function submit(): void {
-  if (isValid.value) {
-    router.push({ name: "top", query: { integer: integer.value } });
-  }
+  router.push({ name: "top", query: { integer: integer.value } });
 }
 </script>
