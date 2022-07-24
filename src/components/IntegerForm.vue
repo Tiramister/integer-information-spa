@@ -1,25 +1,44 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col>
-        <v-form class="w-100">
-          <v-text-field
-            style="width: min(100%, 500px)"
-            v-model="integer"
-            :rules="[validateInteger]"
-            label="1 以上 1e18 以下の整数"
-          ></v-text-field>
-        </v-form>
-      </v-col>
-    </v-row>
-  </v-container>
+  <div class="d-flex ma-10">
+    <v-form ref="form" style="width: min(100%, 500px)" @submit.prevent="submit">
+      <v-text-field
+        v-model="integer"
+        :rules="[validateInteger]"
+        label="1 以上 1e18 以下の整数"
+        variant="outlined"
+        density="compact"
+      />
+    </v-form>
+    <v-btn
+      class="ml-5"
+      color="primary"
+      flat
+      :disabled="!isValid"
+      @click="submit"
+      >調べる</v-btn
+    >
+  </div>
 </template>
 
 <script setup lang="ts">
-import { Ref, ref } from "vue";
+import { computed, ComputedRef, Ref, ref } from "vue";
 
-let integer: Ref<BigInt> = ref(BigInt(1));
-const validateInteger = (v: any) =>
-  /^([1-9][0-9]{0,17}|10{18})$/.test(v) ||
-  "1 以上 1e18 以下の整数を入力してください";
+const integer: Ref<string> = ref("");
+
+function validateInteger(v: string) {
+  return (
+    /^([1-9][0-9]{0,17}|10{18})$/.test(v) ||
+    "1 以上 1e18 以下の整数を入力してください"
+  );
+}
+
+const isValid: ComputedRef<boolean> = computed(
+  () => validateInteger(integer.value) === true
+);
+
+function submit(): void {
+  if (isValid.value) {
+    alert(integer.value);
+  }
+}
 </script>
