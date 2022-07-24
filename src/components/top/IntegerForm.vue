@@ -1,22 +1,27 @@
 <template>
-  <div class="d-flex ma-10">
-    <v-form ref="form" style="width: min(100%, 500px)" @submit.prevent="submit">
-      <v-text-field
-        v-model="integer"
-        :rules="[validateInteger]"
-        label="1 以上 1,000,000,000,000,000,000 以下の整数"
-        variant="outlined"
-        density="compact"
-      />
+  <div class="d-flex">
+    <v-form class="w-100" ref="form" @submit.prevent="submit">
+      <v-row no-gutters>
+        <v-col cols="12" sm="6" class="mr-5">
+          <v-text-field
+            v-model="integer"
+            :rules="[validateInteger]"
+            label="1 以上 1,000,000,000,000,000,000 以下の整数"
+            variant="outlined"
+            density="compact"
+          />
+        </v-col>
+        <v-col>
+          <v-btn
+            color="primary"
+            flat
+            :disabled="validateInteger(integer) !== true"
+            @click="submit"
+            >調べる</v-btn
+          >
+        </v-col>
+      </v-row>
     </v-form>
-    <v-btn
-      class="ml-5"
-      color="primary"
-      flat
-      :disabled="validateInteger(integer) !== true"
-      @click="submit"
-      >調べる</v-btn
-    >
   </div>
 </template>
 
