@@ -22,6 +22,7 @@
 
 <script setup lang="ts">
 import { computed, ComputedRef, Ref, ref } from "vue";
+import { useRouter } from "vue-router";
 
 const integer: Ref<string> = ref("");
 
@@ -36,9 +37,10 @@ const isValid: ComputedRef<boolean> = computed(
   () => validateInteger(integer.value) === true
 );
 
+const router = useRouter();
 function submit(): void {
   if (isValid.value) {
-    alert(integer.value);
+    router.push({ name: "top", query: { integer: integer.value } });
   }
 }
 </script>
