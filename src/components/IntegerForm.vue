@@ -4,7 +4,7 @@
       <v-text-field
         v-model="integer"
         :rules="[validateInteger]"
-        label="1 以上 1e18 以下の整数"
+        label="1 以上 1,000,000,000,000,000,000 以下の整数"
         variant="outlined"
         density="compact"
       />
@@ -28,7 +28,7 @@ const integer: Ref<string> = ref("");
 function validateInteger(v: string) {
   return (
     /^([1-9][0-9]{0,17}|10{18})$/.test(v) ||
-    "1 以上 1e18 以下の整数を入力してください"
+    "1 以上 1,000,000,000,000,000,000 以下の整数を入力してください"
   );
 }
 
