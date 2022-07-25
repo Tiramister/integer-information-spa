@@ -38,7 +38,7 @@
 <script setup lang="ts">
 import { computed, ComputedRef } from "@vue/reactivity";
 import toKatex from "./toKatex";
-import isPrime from "./logics/isPrime";
+import { isPrime } from "./logics/isPrime";
 
 // パラメータから整数を受け取る
 const props = defineProps({
