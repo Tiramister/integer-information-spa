@@ -15,6 +15,10 @@
       </thead>
       <tbody class="text-body-1">
         <tr>
+          <td>素数</td>
+          <td>{{ isPrime(integer) ? "Yes" : "No" }}</td>
+        </tr>
+        <tr>
           <td>素因数分解</td>
           <td>TODO</td>
         </tr>
@@ -34,6 +38,7 @@
 <script setup lang="ts">
 import { computed, ComputedRef } from "@vue/reactivity";
 import toKatex from "./toKatex";
+import isPrime from "./logics/isPrime";
 
 // パラメータから整数を受け取る
 const props = defineProps({
