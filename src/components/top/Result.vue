@@ -5,6 +5,29 @@
       v-html="toKatex(`n = ${integer}`)"
       class="text-h4 font-weight-regular"
     />
+
+    <v-table fixed-header density="comfortable" class="mt-5 mx-n4">
+      <thead class="text-subtitle-1">
+        <tr>
+          <th class="w-25">項目</th>
+          <th class="w-75">結果</th>
+        </tr>
+      </thead>
+      <tbody class="text-body-1">
+        <tr>
+          <td>素因数分解</td>
+          <td>TODO</td>
+        </tr>
+        <tr>
+          <td>次の素数</td>
+          <td>TODO</td>
+        </tr>
+        <tr>
+          <td>約数の個数</td>
+          <td>TODO</td>
+        </tr>
+      </tbody>
+    </v-table>
   </template>
 </template>
 
