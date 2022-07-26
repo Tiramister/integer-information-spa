@@ -6,36 +6,35 @@
       class="text-h4 font-weight-regular"
     />
 
-    <v-table fixed-header density="comfortable" class="mt-5 mx-n4">
-      <thead class="text-subtitle-1">
-        <tr>
-          <th class="w-25">項目</th>
-          <th class="w-75">結果</th>
-        </tr>
-      </thead>
-      <tbody class="text-body-1">
-        <tr>
-          <td>素因数分解</td>
-          <td v-html="renderFactors(factorize(integer))" />
-        </tr>
-        <tr v-if="prevPrime !== undefined">
-          <td>前の素数</td>
-          <td v-html="renderInteger(prevPrime)" />
-        </tr>
-        <tr>
-          <td>次の素数</td>
-          <td v-html="renderInteger(nextPrime(integer))" />
-        </tr>
-        <tr>
-          <td>約数の個数</td>
-          <td v-html="renderInteger(countDivisors(integer))" />
-        </tr>
-        <tr>
-          <td>トーシェント関数</td>
-          <td v-html="renderInteger(totient(integer))" />
-        </tr>
-      </tbody>
-    </v-table>
+    <v-row class="mt-5 text-h6">
+      <v-col cols="3">項目</v-col>
+      <v-col cols="9">結果</v-col>
+    </v-row>
+    <v-divider class="my-2" />
+    <v-row>
+      <v-col cols="3">素因数分解</v-col>
+      <v-col cols="9" v-html="renderFactors(factorize(integer))" />
+    </v-row>
+    <v-divider class="my-2" />
+    <v-row v-if="prevPrime !== undefined">
+      <v-col cols="3">前の素数</v-col>
+      <v-col cols="9" v-html="renderInteger(prevPrime)" />
+    </v-row>
+    <v-divider class="my-2" />
+    <v-row>
+      <v-col cols="3">次の素数</v-col>
+      <v-col cols="9" v-html="renderInteger(nextPrime(integer))" />
+    </v-row>
+    <v-divider class="my-2" />
+    <v-row>
+      <v-col cols="3">約数の個数</v-col>
+      <v-col cols="9" v-html="renderInteger(countDivisors(integer))" />
+    </v-row>
+    <v-divider class="my-2" />
+    <v-row>
+      <v-col cols="3">トーシェント関数</v-col>
+      <v-col cols="9" v-html="renderInteger(totient(integer))" />
+    </v-row>
   </template>
 </template>
 
