@@ -20,21 +20,18 @@
 </template>
 
 <script setup lang="ts">
-import { Ref, ref, watch } from "vue";
+import { ref } from "vue";
 import { useRouter } from "vue-router";
 import validateInteger from "./validateInteger";
 
-const integer: Ref<string> = ref("");
-
 // 親からクエリパラメータを受け取る
 const props = defineProps({
-  integer: String,
+  integer: {
+    type: String,
+    required: true,
+  },
 });
-watch([props], () => {
-  if (props.integer !== undefined) {
-    integer.value = props.integer;
-  }
-});
+const integer = ref(props.integer);
 
 // ルーティング
 const router = useRouter();

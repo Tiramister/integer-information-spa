@@ -1,6 +1,6 @@
 <template>
-  <IntegerForm :queryInteger="integer" />
-  <MainPageResult :integer="integer" />
+  <IntegerForm :key="reloadKey" :integer="integer" />
+  <MainPageResult v-if="integer !== ''" :key="reloadKey" :integer="integer" />
 </template>
 
 <script setup lang="ts">
@@ -10,7 +10,10 @@ import IntegerForm from "./IntegerForm.vue";
 import MainPageResult from "./MainPageResult.vue";
 import validateInteger from "./validateInteger";
 
-const integer = ref("0");
+const integer = ref("");
+
+// MainPageResult をリフレッシュさせるための key
+const reloadKey = ref(0);
 
 // クエリパラメータの読み取り
 const route = useRoute();
@@ -21,8 +24,8 @@ function readQueryParameter(): void {
     validateInteger(queryInteger) === true
   ) {
     integer.value = queryInteger;
+    ++reloadKey.value;
   }
 }
-
 watch([route], readQueryParameter, { immediate: true });
 </script>
