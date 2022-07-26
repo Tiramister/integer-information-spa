@@ -1,4 +1,6 @@
 import { isPrime } from "./isPrime";
+import random from "./random";
+import gcd from "./gcd";
 
 type Factor = {
   base: bigint;
@@ -19,6 +21,34 @@ function findDivisorNaive(n: bigint): bigint {
   let base = 2n;
   while (n % base !== 0n) ++base;
   return base;
+}
+
+/**
+ * Pollard's rho 法. Heuristic O(n^{1/4})
+ *
+ * @param n - 合成数
+ */
+function findDivisor(n: bigint): bigint {
+  console.assert(
+    n !== 1n && isPrime(n) === false,
+    "n must be a composite number"
+  );
+
+  if (n % 2n === 0n) return 2n;
+
+  while (true) {
+    const seed = random(n);
+    const offset = random(n);
+    const f = (x: bigint) => (x * x + offset) % n;
+
+    let [x, y] = [seed, seed];
+    do {
+      [x, y] = [f(x), f(f(y))];
+    } while (gcd(x - y, n) === 1n);
+
+    const g = gcd(x - y, n);
+    if (g !== n) return g;
+  }
 }
 
 /**
@@ -67,8 +97,8 @@ function factorizeGeneric(
   return factors;
 }
 
-const factorizeNaive = (n: bigint): Factor[] =>
-  factorizeGeneric(findDivisorNaive, n);
+const factorizeNaive = (n: bigint) => factorizeGeneric(findDivisorNaive, n);
+const factorize = (n: bigint) => factorizeGeneric(findDivisor, n);
 
 export type { Factor };
-export { factorizeNaive };
+export { factorizeNaive, factorize };
