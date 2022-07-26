@@ -32,7 +32,7 @@
         </tr>
         <tr>
           <td>約数の個数</td>
-          <td>TODO</td>
+          <td v-html="renderInteger(countDivisors(integer))" />
         </tr>
       </tbody>
     </v-table>
@@ -45,6 +45,7 @@ import { renderString, renderInteger, renderFactors } from "./renderMath";
 import { isPrime } from "../../logics/isPrime";
 import { factorize_naive as factorize } from "../../logics/factorize";
 import { previousPrime, nextPrime } from "../../logics/adjacentPrime";
+import countDivisors from "../../logics/countDivisors";
 
 // パラメータから整数を受け取る
 const props = defineProps({
