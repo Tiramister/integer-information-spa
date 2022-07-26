@@ -22,9 +22,13 @@
           <td>素因数分解</td>
           <td v-html="renderFactors(factorize(integer))" />
         </tr>
+        <tr v-if="prevPrime !== undefined">
+          <td>前の素数</td>
+          <td v-html="renderInteger(prevPrime)" />
+        </tr>
         <tr>
           <td>次の素数</td>
-          <td>TODO</td>
+          <td v-html="renderInteger(nextPrime(integer))" />
         </tr>
         <tr>
           <td>約数の個数</td>
@@ -37,9 +41,10 @@
 
 <script setup lang="ts">
 import { computed, ComputedRef } from "@vue/reactivity";
-import { renderString, renderFactors } from "./renderMath";
+import { renderString, renderInteger, renderFactors } from "./renderMath";
 import { isPrime } from "../../logics/isPrime";
 import { factorize_naive as factorize } from "../../logics/factorize";
+import { previousPrime, nextPrime } from "../../logics/adjacentPrime";
 
 // パラメータから整数を受け取る
 const props = defineProps({
@@ -52,4 +57,7 @@ const integer: ComputedRef<bigint> = computed(() => {
     return BigInt(props.integer);
   }
 });
+const prevPrime: ComputedRef<bigint | undefined> = computed(() =>
+  previousPrime(integer.value)
+);
 </script>
