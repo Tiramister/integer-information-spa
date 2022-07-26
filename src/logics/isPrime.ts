@@ -1,15 +1,6 @@
 import gcd from "./gcd";
 import pow from "./pow";
 
-/** ナイーブな試し割りアルゴリズム. O(sqrt(n)) */
-export function isPrimeNaive(n: bigint): boolean {
-  if (n === 1n) return false;
-  for (let p = 2n; p * p <= n; ++p) {
-    if (n % p === 0n) return false;
-  }
-  return true;
-}
-
 /**
  * 2^64まで判定するのに必要な基底.
  *
