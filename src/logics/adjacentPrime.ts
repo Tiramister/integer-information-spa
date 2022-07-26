@@ -1,4 +1,4 @@
-import { isPrime } from "./isPrime";
+import isPrime from "./isPrime";
 
 export function previousPrime(n: bigint): bigint | undefined {
   while (--n > 1n) {

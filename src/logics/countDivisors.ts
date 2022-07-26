@@ -1,4 +1,5 @@
-import { Factor, factorizeNaive as factorize } from "./factorize";
+import type { Factor } from "./factorize";
+import factorize from "./factorize";
 
 export default function countDivisors(n: bigint): bigint {
   return factorize(n).reduce(

@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import { tex, factorsToString } from "./renderMath";
-import { factorize } from "../../logics/factorize";
+import factorize from "../../logics/factorize";
 import { previousPrime, nextPrime } from "../../logics/adjacentPrime";
 import countDivisors from "../../logics/countDivisors";
 import totient from "../../logics/totient";

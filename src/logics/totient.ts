@@ -1,4 +1,5 @@
-import { Factor, factorize } from "./factorize";
+import type { Factor } from "./factorize";
+import factorize from "./factorize";
 import pow from "./pow";
 
 export default function totient(n: bigint): bigint {

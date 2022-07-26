@@ -1,27 +1,11 @@
-import { isPrime } from "./isPrime";
+import isPrime from "./isPrime";
 import { bigRandom } from "./random";
 import gcd from "./gcd";
 
-type Factor = {
+export type Factor = {
   base: bigint;
   exp: bigint;
 };
-
-/**
- * 愚直 O(sqrt(n))
- *
- * @param n - 合成数
- */
-function findDivisorNaive(n: bigint): bigint {
-  console.assert(
-    n !== 1n && isPrime(n) === false,
-    "n must be a composite number"
-  );
-
-  let base = 2n;
-  while (n % base !== 0n) ++base;
-  return base;
-}
 
 /**
  * Pollard's rho 法. Heuristic O(n^{1/4})
@@ -51,15 +35,7 @@ function findDivisor(n: bigint): bigint {
   }
 }
 
-/**
- * 素因数分解を行う。
- *
- * @param findDivisor - 合成数の非自明な約数を返す関数
- */
-function factorizeGeneric(
-  findDivisor: (n: bigint) => bigint,
-  n: bigint
-): Factor[] {
+export default function factorize(n: bigint): Factor[] {
   if (n === 1n) return [];
 
   // 素数の積に分解
@@ -96,9 +72,3 @@ function factorizeGeneric(
 
   return factors;
 }
-
-export type { Factor };
-
-export const factorizeNaive = (n: bigint) =>
-  factorizeGeneric(findDivisorNaive, n);
-export const factorize = (n: bigint) => factorizeGeneric(findDivisor, n);

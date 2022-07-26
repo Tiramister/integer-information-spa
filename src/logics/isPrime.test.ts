@@ -1,4 +1,4 @@
-import { isPrime } from "./isPrime";
+import isPrime from "./isPrime";
 import { random } from "./random";
 
 test("Less than 10,000", () => {

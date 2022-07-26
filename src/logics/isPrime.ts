@@ -17,7 +17,7 @@ const bases: readonly bigint[] = [
 ];
 
 /** Miller-Rabin 法. O(log n) */
-export function isPrime(n: bigint): boolean {
+export default function isPrime(n: bigint): boolean {
   if (n === 1n) return false;
   if (n === 2n) return true;
   if (n % 2n === 0n) return false;
