@@ -1,5 +1,5 @@
 function pow(x: bigint, e: bigint, mod: bigint | undefined) {
-  let base = 1n;
+  let base = x;
   let result = 1n;
 
   while (e !== 0n) {
