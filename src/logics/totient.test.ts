@@ -18,11 +18,11 @@ test("less than 1,000", () => {
   }
 });
 
-test("100 random cases in [100,000, 200,000)", () => {
+test("50 random cases in [100,000, 200,000)", () => {
   const lower = 100_000n;
   const upper = 200_000n;
 
-  for (let i = 0; i < 100; ++i) {
+  for (let i = 0; i < 50; ++i) {
     let n = random(upper - lower) + lower;
     expect(totient(n)).toBe(totientNaive(n));
   }
