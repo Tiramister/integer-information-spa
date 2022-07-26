@@ -1,5 +1,5 @@
 import { isPrime } from "./isPrime";
-import random from "./random";
+import { bigRandom } from "./random";
 import gcd from "./gcd";
 
 type Factor = {
@@ -37,8 +37,8 @@ function findDivisor(n: bigint): bigint {
   if (n % 2n === 0n) return 2n;
 
   while (true) {
-    const seed = random(n);
-    const offset = random(n);
+    const seed = bigRandom(n);
+    const offset = bigRandom(n);
     const f = (x: bigint) => (x * x + offset) % n;
 
     let [x, y] = [seed, seed];
