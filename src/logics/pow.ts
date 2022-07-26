@@ -8,7 +8,7 @@ function pow(x: bigint, e: bigint, mod: bigint | undefined) {
       if (mod !== undefined) result %= mod;
     }
 
-    base *= x;
+    base *= base;
     if (mod !== undefined) base %= mod;
     e /= 2n;
   }
