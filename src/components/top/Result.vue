@@ -30,6 +30,10 @@
           <td>約数の個数</td>
           <td v-html="renderInteger(countDivisors(integer))" />
         </tr>
+        <tr>
+          <td>トーシェント関数</td>
+          <td v-html="renderInteger(totient(integer))" />
+        </tr>
       </tbody>
     </v-table>
   </template>
@@ -41,6 +45,7 @@ import { renderString, renderInteger, renderFactors } from "./renderMath";
 import { factorize } from "../../logics/factorize";
 import { previousPrime, nextPrime } from "../../logics/adjacentPrime";
 import countDivisors from "../../logics/countDivisors";
+import totient from "../../logics/totient";
 
 // パラメータから整数を受け取る
 const props = defineProps({
