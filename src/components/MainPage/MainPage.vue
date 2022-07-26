@@ -1,13 +1,13 @@
 <template>
   <IntegerForm :queryInteger="integer" />
-  <Result :integer="integer" />
+  <MainPageResult :integer="integer" />
 </template>
 
 <script setup lang="ts">
 import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import IntegerForm from "./IntegerForm.vue";
-import Result from "./Result.vue";
+import MainPageResult from "./MainPageResult.vue";
 import validateInteger from "./validateInteger";
 
 const integer = ref("0");

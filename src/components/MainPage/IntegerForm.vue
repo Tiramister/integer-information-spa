@@ -39,6 +39,6 @@ watch([props], () => {
 // ルーティング
 const router = useRouter();
 function submit(): void {
-  router.push({ name: "top", query: { integer: integer.value } });
+  router.push({ name: "MainPage", query: { integer: integer.value } });
 }
 </script>
