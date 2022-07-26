@@ -16,7 +16,7 @@
       <tbody class="text-body-1">
         <tr>
           <td>素因数分解</td>
-          <td v-html="renderFactors(factorize(integer))" />
+          <td v-html="renderFactors(factorizeNaive(integer))" />
         </tr>
         <tr v-if="prevPrime !== undefined">
           <td>前の素数</td>
@@ -38,7 +38,7 @@
 <script setup lang="ts">
 import { computed, ComputedRef } from "@vue/reactivity";
 import { renderString, renderInteger, renderFactors } from "./renderMath";
-import { factorize_naive as factorize } from "../../logics/factorize";
+import { factorizeNaive } from "../../logics/factorize";
 import { previousPrime, nextPrime } from "../../logics/adjacentPrime";
 import countDivisors from "../../logics/countDivisors";
 

@@ -1,4 +1,4 @@
-import { Factor, factorize_naive as factorize } from "./factorize";
+import { Factor, factorizeNaive as factorize } from "./factorize";
 
 function countDivisors(n: bigint): bigint {
   return factorize(n).reduce(
