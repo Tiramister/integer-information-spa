@@ -18,10 +18,6 @@ function factorize_naive(n: bigint): Factor[] {
   if (n !== 1n) {
     result.push({ base: n, exp: 1n });
   }
-
-  result.sort((lhs: Factor, rhs: Factor) =>
-    lhs.base < rhs.base ? -1 : lhs.base > rhs.base ? 1 : 0
-  );
   return result;
 }
 
