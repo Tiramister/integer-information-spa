@@ -21,12 +21,17 @@ test("100 * 100 pairs", () => {
 
   // テスト
   for (let n = 1; n < upper; ++n) {
-    for (let m = 1; m <= n; ++m) {
+    for (let m = 1; m < upper; ++m) {
       let g = 0;
       for (let div of divisors[n]) {
         if (divisors[m].includes(div)) g = div;
       }
       expect(gcd(BigInt(n), BigInt(m))).toBe(BigInt(g));
+
+      // 一応負数もチェック
+      expect(gcd(BigInt(-n), BigInt(m))).toBe(BigInt(g));
+      expect(gcd(BigInt(n), BigInt(-m))).toBe(BigInt(g));
+      expect(gcd(BigInt(-n), BigInt(-m))).toBe(BigInt(g));
     }
   }
 });
