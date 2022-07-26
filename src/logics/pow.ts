@@ -1,4 +1,4 @@
-function pow(x: bigint, e: bigint, mod: bigint | undefined) {
+function pow(x: bigint, e: bigint, mod?: bigint) {
   let base = x;
   let result = 1n;
 
