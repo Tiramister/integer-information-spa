@@ -5,6 +5,10 @@ function renderString(s: string): string {
   return katex.renderToString(s, { output: "html" });
 }
 
+function renderInteger(n: number | bigint): string {
+  return renderString(n.toString());
+}
+
 function renderFactors(factors: Factor[]): string {
   if (factors.length === 0) {
     // 1の場合
@@ -23,4 +27,4 @@ function renderFactors(factors: Factor[]): string {
   return renderString(s);
 }
 
-export { renderString, renderFactors };
+export { renderString, renderInteger, renderFactors };
