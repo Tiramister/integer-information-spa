@@ -1,21 +1,17 @@
 import katex from "katex";
 import type { Factor } from "../../logics/factorize";
 
-export function renderString(s: string): string {
+export function tex(s: string): string {
   return katex.renderToString(s, { output: "html" });
 }
 
-export function renderInteger(n: number | bigint): string {
-  return renderString(n.toString());
-}
-
-export function renderFactors(factors: Factor[]): string {
+export function factorsToString(factors: Factor[]): string {
   if (factors.length === 0) {
     // 1の場合
-    return renderString("1");
+    return "1";
   }
 
-  const s = factors
+  return factors
     .map((f: Factor): string => {
       if (f.exp === 1n) {
         return `${f.base}`;
@@ -24,5 +20,4 @@ export function renderFactors(factors: Factor[]): string {
       }
     })
     .join(" \\cdot ");
-  return renderString(s);
 }

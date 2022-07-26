@@ -1,10 +1,7 @@
 <template>
   <template v-if="integer !== 0n">
     <v-divider class="my-5" />
-    <span
-      v-html="renderString(`n = ${integer}`)"
-      class="text-h4 font-weight-regular"
-    />
+    <span v-html="tex(`n = ${integer}`)" class="text-h4 font-weight-regular" />
 
     <v-row class="mt-5 text-h6">
       <v-col cols="3">項目</v-col>
@@ -13,34 +10,39 @@
     <v-divider class="my-2" />
     <v-row>
       <v-col cols="3">素因数分解</v-col>
-      <v-col cols="9" v-html="renderFactors(factorize(integer))" />
+      <v-col
+        cols="9"
+        v-html="tex(`n = ${factorsToString(factorize(integer))}`)"
+      />
     </v-row>
-    <v-divider class="my-2" />
-    <v-row v-if="prevPrime !== undefined">
-      <v-col cols="3">前の素数</v-col>
-      <v-col cols="9" v-html="renderInteger(prevPrime)" />
-    </v-row>
+    <template v-if="prevPrime !== undefined">
+      <v-divider class="my-2" />
+      <v-row>
+        <v-col cols="3">前の素数</v-col>
+        <v-col cols="9" v-html="tex(`${prevPrime}`)" />
+      </v-row>
+    </template>
     <v-divider class="my-2" />
     <v-row>
       <v-col cols="3">次の素数</v-col>
-      <v-col cols="9" v-html="renderInteger(nextPrime(integer))" />
+      <v-col cols="9" v-html="tex(`${nextPrime(integer)}`)" />
     </v-row>
     <v-divider class="my-2" />
     <v-row>
       <v-col cols="3">約数の個数</v-col>
-      <v-col cols="9" v-html="renderInteger(countDivisors(integer))" />
+      <v-col cols="9" v-html="tex(`d(n) = ${countDivisors(integer)}`)" />
     </v-row>
     <v-divider class="my-2" />
     <v-row>
       <v-col cols="3">トーシェント関数</v-col>
-      <v-col cols="9" v-html="renderInteger(totient(integer))" />
+      <v-col cols="9" v-html="tex(`\\varphi(n) = ${totient(integer)}`)" />
     </v-row>
   </template>
 </template>
 
 <script setup lang="ts">
 import { computed, ComputedRef } from "@vue/reactivity";
-import { renderString, renderInteger, renderFactors } from "./renderMath";
+import { tex, factorsToString } from "./renderMath";
 import { factorize } from "../../logics/factorize";
 import { previousPrime, nextPrime } from "../../logics/adjacentPrime";
 import countDivisors from "../../logics/countDivisors";
