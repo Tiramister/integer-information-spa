@@ -11,8 +11,6 @@ function random100(): bigint {
  *
  * @param n - 2^100 より十分小さい整数
  */
-function random(n: bigint): bigint {
+export default function random(n: bigint): bigint {
   return random100() % n;
 }
-
-export default random;

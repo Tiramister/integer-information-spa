@@ -1,11 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import MainPage from "./components/MainPage/MainPage.vue";
 
-const routes = [{ path: "/", name: "MainPage", component: MainPage }];
-
-const router = createRouter({
+export default createRouter({
   history: createWebHistory(),
-  routes,
+  routes: [{ path: "/", name: "MainPage", component: MainPage }],
 });
-
-export default router;

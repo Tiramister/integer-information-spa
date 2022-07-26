@@ -1,4 +1,4 @@
-function pow(x: bigint, e: bigint, mod?: bigint) {
+export default function pow(x: bigint, e: bigint, mod?: bigint) {
   let base = x;
   let result = 1n;
 
@@ -15,5 +15,3 @@ function pow(x: bigint, e: bigint, mod?: bigint) {
 
   return result;
 }
-
-export default pow;

@@ -97,8 +97,8 @@ function factorizeGeneric(
   return factors;
 }
 
-const factorizeNaive = (n: bigint) => factorizeGeneric(findDivisorNaive, n);
-const factorize = (n: bigint) => factorizeGeneric(findDivisor, n);
-
 export type { Factor };
-export { factorizeNaive, factorize };
+
+export const factorizeNaive = (n: bigint) =>
+  factorizeGeneric(findDivisorNaive, n);
+export const factorize = (n: bigint) => factorizeGeneric(findDivisor, n);

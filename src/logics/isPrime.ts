@@ -2,7 +2,7 @@ import gcd from "./gcd";
 import pow from "./pow";
 
 /** ナイーブな試し割りアルゴリズム. O(sqrt(n)) */
-function isPrimeNaive(n: bigint): boolean {
+export function isPrimeNaive(n: bigint): boolean {
   if (n === 1n) return false;
   for (let p = 2n; p * p <= n; ++p) {
     if (n % p === 0n) return false;
@@ -26,7 +26,7 @@ const bases: readonly bigint[] = [
 ];
 
 /** Miller-Rabin 法. O(log n) */
-function isPrime(n: bigint): boolean {
+export function isPrime(n: bigint): boolean {
   if (n === 1n) return false;
   if (n === 2n) return true;
   if (n % 2n === 0n) return false;
@@ -58,5 +58,3 @@ function isPrime(n: bigint): boolean {
 
   return true;
 }
-
-export { isPrime, isPrimeNaive };

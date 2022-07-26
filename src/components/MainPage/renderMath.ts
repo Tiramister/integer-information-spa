@@ -1,15 +1,15 @@
 import katex from "katex";
 import type { Factor } from "../../logics/factorize";
 
-function renderString(s: string): string {
+export function renderString(s: string): string {
   return katex.renderToString(s, { output: "html" });
 }
 
-function renderInteger(n: number | bigint): string {
+export function renderInteger(n: number | bigint): string {
   return renderString(n.toString());
 }
 
-function renderFactors(factors: Factor[]): string {
+export function renderFactors(factors: Factor[]): string {
   if (factors.length === 0) {
     // 1の場合
     return renderString("1");
@@ -26,5 +26,3 @@ function renderFactors(factors: Factor[]): string {
     .join(" \\cdot ");
   return renderString(s);
 }
-
-export { renderString, renderInteger, renderFactors };
