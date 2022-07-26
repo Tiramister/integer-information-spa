@@ -15,10 +15,6 @@
       </thead>
       <tbody class="text-body-1">
         <tr>
-          <td>素数</td>
-          <td>{{ isPrime(integer) ? "Yes" : "No" }}</td>
-        </tr>
-        <tr>
           <td>素因数分解</td>
           <td v-html="renderFactors(factorize(integer))" />
         </tr>
@@ -42,7 +38,6 @@
 <script setup lang="ts">
 import { computed, ComputedRef } from "@vue/reactivity";
 import { renderString, renderInteger, renderFactors } from "./renderMath";
-import { isPrime } from "../../logics/isPrime";
 import { factorize_naive as factorize } from "../../logics/factorize";
 import { previousPrime, nextPrime } from "../../logics/adjacentPrime";
 import countDivisors from "../../logics/countDivisors";
