@@ -2,7 +2,7 @@
   <template v-if="integer !== 0n">
     <v-divider class="my-5" />
     <span
-      v-html="toKatex(`n = ${integer}`)"
+      v-html="renderString(`n = ${integer}`)"
       class="text-h4 font-weight-regular"
     />
 
@@ -20,7 +20,7 @@
         </tr>
         <tr>
           <td>素因数分解</td>
-          <td>TODO</td>
+          <td v-html="renderFactors(factorize(integer))" />
         </tr>
         <tr>
           <td>次の素数</td>
@@ -37,8 +37,9 @@
 
 <script setup lang="ts">
 import { computed, ComputedRef } from "@vue/reactivity";
-import toKatex from "./toKatex";
+import { renderString, renderFactors } from "./renderMath";
 import { isPrime } from "../../logics/isPrime";
+import { factorize_naive as factorize } from "../../logics/factorize";
 
 // パラメータから整数を受け取る
 const props = defineProps({
