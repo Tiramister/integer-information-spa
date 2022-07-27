@@ -56,7 +56,7 @@ export default function factorize(n: bigint): Factor[] {
 
   // ランレングス圧縮
   let factors: Factor[] = [];
-  primes.sort();
+  primes.sort((lhs, rhs) => (lhs < rhs ? -1 : lhs > rhs ? 1 : 0));
 
   let base = 0n;
   let exp = 0n;
