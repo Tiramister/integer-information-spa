@@ -3,5 +3,5 @@ import MainPage from "./components/MainPage/MainPage.vue";
 
 export default createRouter({
   history: createWebHistory(),
-  routes: [{ path: "/", name: "MainPage", component: MainPage }],
+  routes: [{ path: "/integer/", name: "MainPage", component: MainPage }],
 });
